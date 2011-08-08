@@ -22,10 +22,10 @@ Create a demo form:
 		</select>
 
 		<label><input type="radio" name="demo_radio" value="1" />1</label>
-		<label><input type="radio" name="demo[radio]" value="2" />2</label>
+		<label><input type="radio" name="demo_radio" value="2" />2</label>
 
 		<label><input type="checkbox" name="demo_checkbox" value="1" checked="checked" />1</label>
-		<label><input type="checkbox" name="demo.checkbox" value="2" checked="checked" />2</label>
+		<label><input type="checkbox" name="demo_checkbox" value="2" checked="checked" />2</label>
 
 	</form>
 
@@ -49,8 +49,10 @@ Set/get values via javascript:
       });
     </script>
 
-Note that a variety of naming conventions are accounted for, i.e., demo_text, demo.text, and demo[text]
-will all be treated as synonymous references to the same value.
+## Todo
+
+* Support a variety of naming conventions, e.g., demo_text, demo.text, and demo[text] will all be treated as synonymous references to the same value
+* Unit tests
 
 ## Author
 

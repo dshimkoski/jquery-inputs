@@ -78,6 +78,7 @@
 			
 			// serialize form values
 			$.each($(this).serializeArray(), function(){
+				//console.log(this.name);
 				// expands values in scope
 				processInput( this.name, this.value, scope );
 			});
