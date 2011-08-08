@@ -29,9 +29,9 @@ Create a demo form:
 
 	</form>
 
-Set and get some values via javascript:
+Set/get values via javascript:
 
-    <pre>
+    <script>
       jQuery(document).ready(function($) {
 		
         $('#demo-form').inputs('set', {
@@ -47,7 +47,7 @@ Set and get some values via javascript:
 		console.log( $('#demo-form').inputs('get') );
 		
       });
-    </pre>
+    </script>
 
 Note that a variety of naming conventions are accounted for, i.e., demo_text, demo.text, and demo[text]
 will all be treated as synonymous references to the same value.
