@@ -51,7 +51,8 @@ Set/get values via javascript:
 
 ## Todo
 
-* Support a variety of naming conventions, e.g., demo_text, demo.text, and demo[text] will all be treated as synonymous references to the same value
+* Support multiple naming conventions, e.g., demo_text, demo.text, and demo[text] will all be treated as synonymous
+  references to the same value (mostly there, but a few bugs to work out)
 * Unit tests
 
 ## Author
