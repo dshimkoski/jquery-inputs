@@ -1,6 +1,6 @@
-# jQuery Inputs plugin
+# jquery-inputs plugin
 
-jQuery Inputs is a stateless jQuery plugin that allows JSON set/get on HTML forms
+jquery-inputs is a stateless jQuery plugin that allows JSON set/get on HTML forms
 
 ## Usage
 
