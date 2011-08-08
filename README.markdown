@@ -54,7 +54,7 @@ will all be treated as synonymous references to the same value.
 
 ## Author
 
-[Denny Shimkoski]([@dennyshim](http://twitter.com/dennyshim))
+[Denny Shimkoski](http://twitter.com/dennyshim)
 
 ## Other
 
