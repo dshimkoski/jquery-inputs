@@ -1,5 +1,5 @@
 /*
- * jquery-inputs is a jQuery plugin that allows JSON set/get on HTML forms
+ * jquery-inputs is a jQuery plugin that allows set/get on form inputs using hierarchical JSON structures
  *
  * For usage and examples, visit: http://github.com/dshimkoski/jquery-inputs/
  *
@@ -78,7 +78,6 @@
 			
 			// serialize form values
 			$.each($(this).serializeArray(), function(){
-				//console.log(this.name);
 				// expands values in scope
 				processInput( this.name, this.value, scope );
 			});
@@ -134,7 +133,7 @@
 						// find largest int index
 						for( var j in scope ) {
 							if( scope.hasOwnProperty(j) && j % 1 === 0 ) {
-								key = Math.max( j + 1, key );
+								key = Math.max( parseInt(j, 10) + 1, key );
 							}
 						}
 					}
@@ -143,8 +142,12 @@
 					if( key === 0 || key ) {
 						// save last scope
 						last = {scope: scope, key: key};
-						// push new scope
-						scope = scope[key] = (scope[key] !== undefined ? scope[key] : {});
+						// push new scope if necessary
+						if( scope[key] === undefined ) {
+							scope[key] = {};
+						}
+						// descend into scope
+						scope = scope[key];
 						// push key
 						keys.push(key);
 					}
@@ -163,18 +166,18 @@
 			
 		}
 		
-		// leftover key from parse
+		// leftover key from parse, e.g., key in form_key, form.key, and form[field].key
 		if( key.length ) {
 			// push key
 			keys.push(key);
 		} else {
-			// backup to previous scope
+			// form[key] requires us to backup since ] pushes new scope
 			scope = last.scope;
 			key = last.key;
 		}
 		
 		// set value
-		if( scope[key] === undefined ) {
+		if( !scope[key] || $.isEmptyObject(scope[key]) ) {
 			scope[key] = value;
 		} else {
 			if( !$.isArray(scope[key]) ) {

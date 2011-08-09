@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="http://code.jquery.com/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+
+<script src="jquery.inputs.js"></script>
+
+<script>
+jQuery(function($){
+	
+	test('get', function(){
+		
+		var actual = $('#test-form').inputs('get');
+		
+		var expected = {
+			test: {
+				text: 'textval',
+				textarea: 'textareaval',
+				select: {
+					options: ['a', 'b']
+				},
+				radio: '2',
+				checkbox: ['1', '3']
+			}
+		};
+		
+		deepEqual( actual, expected, 'form get returns expected json' );
+		
+	});
+	
+	test('setget1', function(){
+		
+		$('#test-form').inputs('set', {
+			test: {
+				text: 'new',
+				select: {
+					options: 'b'
+				},
+				radio: '1',
+				checkbox: '2'
+			}
+		});
+		
+		var actual = $('#test-form').inputs('get');
+		
+		var expected = {
+			test: {
+				text: 'new',
+				textarea: '',
+				select: {
+					options: 'b'
+				},
+				radio: '1',
+				checkbox: '2'
+			}
+		};
+		
+		deepEqual( actual, expected, 'form set/get returns expected json' );
+		
+	});
+	
+	test('setget2', function(){
+		
+		$('#test-form').inputs('set', {
+			test: {
+				text: 'new2',
+				select: {
+					options: ['a']
+				},
+				radio: 2,
+				checkbox: [1, 2]
+			}
+		});
+		
+		var actual = $('#test-form').inputs('get');
+		
+		var expected = {
+			test: {
+				text: 'new2',
+				textarea: '',
+				select: {
+					options: 'a'
+				},
+				radio: '2',
+				checkbox: ['1', '2']
+			}
+		};
+		
+		deepEqual( actual, expected, 'form set/get returns expected json' );
+		
+	});
+	
+	test('keygen get', function(){
+		
+		var actual = $('#test-keygen').inputs('get');
+		
+		var expected = {
+			values: {0: 'a', 1: 'b', 2: 'c'}
+		};
+		
+		deepEqual( actual, expected, 'keygen returns expected json' );
+	
+	});
+	
+	test('keygen set/get', function(){
+		
+		$('#test-keygen').inputs('set', {
+			values: {0: 1, 1: 2, 2: 3}
+		});
+		
+		var actual = $('#test-keygen').inputs('get');
+		
+		var expected = {
+			values: {0: '1', 1: '2', 2: '3'}
+		};
+		
+		deepEqual( actual, expected, 'keygen set/get returns expected json' );
+		
+	});
+	
+});
+</script>
+
+</head>
+
+<body>
+
+<h1 id="qunit-header">jquery-inputs plugin tests</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture"> 
+	<form id="test-form">
+
+		<input type="text" name="test_text" value="textval" />
+
+		<textarea name="test_textarea">textareaval</textarea>
+
+		<select name="test[select].options" multiple="multiple">
+			<option value="a" selected="selected">Option A</option>
+			<option value="b" selected="selected">Option B</option>
+		</select>
+
+		<label><input type="radio" name="test_radio" value="1" />1</label>
+		<label><input type="radio" name="test[radio]" value="2" checked="checked" />2</label>
+		<label><input type="radio" name="test.radio" value="3" />3</label>
+
+		<label><input type="checkbox" name="test[checkbox]" value="1" checked="checked" />1</label>
+		<label><input type="checkbox" name="test_checkbox" value="2" />2</label>
+		<label><input type="checkbox" name="test.checkbox" value="3" checked="checked" />3</label>
+
+	</form>
+	<form id="test-keygen">
+		<input type="text" name="values[]" value="a" />
+		<input type="text" name="values[]" value="b" />
+		<input type="text" name="values[]" value="c" />
+	</form>
+</div>
+
+</body>
+
+</html>

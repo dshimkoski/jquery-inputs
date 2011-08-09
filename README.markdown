@@ -1,6 +1,13 @@
 # jquery-inputs plugin
 
-jquery-inputs is a stateless jQuery plugin that allows JSON set/get on HTML forms
+jquery-inputs is a jQuery plugin that allows set/get on form inputs using hierarchical JSON structures
+
+## Form Element Names
+
+Supports various naming conventions, e.g., demo_field_key, demo.field[key], and demo[field].key
+will all be treated as synonymous references to the same value.
+
+Empty brackets will automatically generate a 0-based index.
 
 ## Usage
 
@@ -22,10 +29,10 @@ Create a demo form:
 		</select>
 
 		<label><input type="radio" name="demo_radio" value="1" />1</label>
-		<label><input type="radio" name="demo_radio" value="2" />2</label>
+		<label><input type="radio" name="demo.radio" value="2" />2</label>
 
 		<label><input type="checkbox" name="demo_checkbox" value="1" checked="checked" />1</label>
-		<label><input type="checkbox" name="demo_checkbox" value="2" checked="checked" />2</label>
+		<label><input type="checkbox" name="demo[checkbox]" value="2" checked="checked" />2</label>
 
 	</form>
 
@@ -49,11 +56,7 @@ Set/get values via javascript:
       });
     </script>
 
-## Todo
-
-* Support multiple naming conventions, e.g., demo_text, demo.text, and demo[text] will all be treated as synonymous
-  references to the same value (mostly there, but a few bugs to work out)
-* Unit tests
+See [QUnit tests](test.html) for further examples.
 
 ## Author
 
