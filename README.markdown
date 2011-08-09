@@ -56,7 +56,7 @@ Set/get values via javascript:
       });
     </script>
 
-See [QUnit tests](test.html) for further examples.
+See [QUnit tests](https://github.com/dshimkoski/jquery-inputs/blob/master/tests.html) for further examples.
 
 ## Author
 
