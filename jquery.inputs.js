@@ -19,7 +19,7 @@
 			var scope = {};
 			
 			// loop through form inputs
-			$form.find(':input').each(function(){
+			$form.find(':input[name]').each(function(){
 				
 				// jquery input
 				var $input = $(this);
